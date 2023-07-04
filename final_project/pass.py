@@ -7,10 +7,12 @@
 # Check against a list of common passwords 10-20 common password = very weak
 # User input that loops until the user quits
 # A dictionary that returns a history of passwords/strengths whilst in the loop.
-
+common_passwords = ["password", "123456", "qwerty", "abc123", "letmein", "admin", "123456789", "password1", "welcome", "12345678", "test"]
 class PasswordChecker:
+
     def __init__(self):
         self.password_history = {}
+     
     def check_strength(self, password):
 
      
@@ -27,6 +29,8 @@ class PasswordChecker:
 
         if any(not char.isalnum() for char in password):
             strength += 1
+        if password in common_passwords:
+            strength = 0
 
         if strength == 0:
             return "very weak"
